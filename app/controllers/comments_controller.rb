@@ -1,6 +1,21 @@
-post '/comments/question/:id' do
+# Get new comment on a question
+get "questions/:question_id/comments/new" do
+  @question = Question.find(params[:question_id])
+  @comment = Comment.new
+  erb :'comments/_new_question_comment'
+end
+
+# Get new comment on an answer
+get "answers/:answer_id/comments/new" do
+  @answer = Answer.find(params[:answer_id])
+  @comment = Comment.new
+  erb :'/comments/_new_answer_comment'
+end
+
+# Create new comment on a question
+post '/questions/:question_id/comments' do
   @user = current_user
-  @question = Question.find(params[:id])
+  @question = Question.find(params[:question_id])
   @comment = Comment.new({
     description: params[:description],
     user_id: @user.id,
@@ -16,9 +31,10 @@ post '/comments/question/:id' do
   end
 end
 
-post '/comments/answers/:id' do
+# Create new comment on an answer
+post '/answers/:answer_id/comments' do
   @user = current_user
-  @answer = Answer.find(params[:id])
+  @answer = Answer.find(params[:answer_id])
   @comment = Comment.new({
     description: params[:description],
     user_id: @user.id,
