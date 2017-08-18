@@ -6,8 +6,6 @@ class CreateVotes < ActiveRecord::Migration[5.1]
 
       t.references :user, index: true
 
-      t.references :commentable, polymorphic: true, index: true
-
       t.timestamps
     end
   end
