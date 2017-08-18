@@ -1,0 +1,6 @@
+<h2>Questions: </h2>
+<% if @questions %>
+  <% @questions.each do |question| %>
+  <p> <a href="/questions/<%= question.id %>"> <%= question.title %> </a> </p>
+  <% end %>
+<% end %>
