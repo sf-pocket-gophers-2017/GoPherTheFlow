@@ -1,10 +1,17 @@
-<form class='container'>
+
+<form class='container' method="post" action="/login">
   <div>
-  <label>Username: </label>
-  <input type="text" name="user[username]">
+    <%= erb :'_errors', layout: false %>
+  </div>
+  <div>
+  <label>Email: </label>
+  <input type="email" name="user[email]">
   </div>
   <div>
   <label>Password: </label>
-  <input type="text" name="user[username]">
+  <input type="password" name="user[password]">
+  </div>
+  <div>
+  <input type="submit" name="login" value="login">
   </div>
 </form>
