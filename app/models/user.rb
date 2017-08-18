@@ -6,8 +6,7 @@ class User < ActiveRecord::Base
   has_many :comments, as: :commentable
   has_many :votes, as: :votable
 
-  validates :username, :email, presence: true
-  validates :email, uniqueness: true
+  validates :username, :email, presence: true, uniqueness: true
   validate :has_password
 
   def authenticate(new_password)
@@ -17,12 +16,12 @@ class User < ActiveRecord::Base
   private
 
   def password
-    @password ||= BCrypt::Password(hashed_password)
+    @password ||= Password.new(password_hash)
   end
 
   def password=(new_password)
-    @password = BCrypt::Password(new_password)
-    self.hashed_password = @password
+    @password = Password.create(new_password)
+    self.password_hash = @password
   end
 
   def has_password
