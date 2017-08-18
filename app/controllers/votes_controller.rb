@@ -14,11 +14,12 @@ post '/questions/:question_id/votes' do
       "#{@user.username} has already voted on this question.",
       "You cannot vote for the same question more than once."
     ]
+    erb :"/questions/_show", layout: false
   else
     @vote = @question.votes.new(user_id: @user.id)
 
     if @vote.save?
-      redirect "/questions/#{@comment.commentable_id}"
+      redirect "/questions/#{@question.id}"
     else
       @errors = @vote.errors.full_messages
       erb :"/questions/_show", layout: false
@@ -51,6 +52,7 @@ post '/answers/:answer_id/votes' do
       "#{@user.username} has already voted on this answer.",
       "You cannot vote for the same answer more than once."
     ]
+    erb :"/questions/_show", layout: false
   else
     @vote = @answer.votes.new(user_id: @user.id)
 
@@ -88,6 +90,7 @@ post '/comments/:comment_id/votes' do
       "#{@user.username} has already voted on this comment.",
       "You cannot vote for the same comment more than once."
     ]
+    erb :"/questions/_show", layout: false
   else
     @vote = @comment.votes.new(user_id: @user.id)
 
@@ -98,6 +101,7 @@ post '/comments/:comment_id/votes' do
         redirect "/questions/#{@comment.commentable_id.question_id}"
       else
         @errors = ["Undefined comment type."]
+        erb :"/questions/_show", layout: false
       end
     else
       @errors = @vote.errors.full_messages
@@ -117,5 +121,6 @@ delete '/comments/:comment_id/votes' do
     redirect "/questions/#{@comment.commentable_id.question_id}"
   else
     @errors = ["Undefined comment type."]
+    erb :"/questions/_show", layout: false
   end
 end
