@@ -13,8 +13,6 @@ class User < ActiveRecord::Base
     self.password == new_password
   end
 
-  private
-
   def password
     @password ||= Password.new(password_hash)
   end
@@ -23,6 +21,8 @@ class User < ActiveRecord::Base
     @password = Password.create(new_password)
     self.password_hash = @password
   end
+
+  private
 
   def has_password
     if self.password == ""
