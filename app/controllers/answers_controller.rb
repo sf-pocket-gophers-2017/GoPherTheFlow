@@ -1,11 +1,12 @@
-get '/answers/:id' do
-  @answers = Answer.all
-  erb :'/answers/_show', layout: false
+get '/questions/:question_id/answers/new' do
+  @question = Question.find(params[:question_id])
+  @answer = Answer.new
+  erb :'/answers/_new', layout: false
 end
 
-post '/questions/:id/answers' do
+post '/questions/:question_id/answers' do
   @user = current_user
-  @question = Question.find(params[:id])
+  @question = Question.find(params[:question_id])
   @answer = Answer.new({description: params[:description], question_id: @question.id, user_id: @user.id})
   if @answer.save?
     redirect "/questions/#{@question.id}"
