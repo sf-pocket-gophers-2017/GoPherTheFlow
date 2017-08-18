@@ -5,37 +5,52 @@ Question.delete_all
 Answer.delete_all
 
 20.times do
-  User.create(username: Faker::Internet.user_name,
-              email: Faker::Internet.safe_email,
-              password_hash: "password"
+  u = User.create(username: Faker::Internet.user_name,
+                  email: Faker::Internet.safe_email,
+                  password: "password")
+  5.times do
+    q = Question.create(title: Faker::LordOfTheRings.location,
+      description: Faker::Lorem.paragraph,
+      user_id: u.id,
+      )
+  end
+  5.times do
+    a = Answer.create(description: Faker::Lorem.paragraph,
+      question_id: q.id,
+      user_id: u.id
     )
-end
+  end
+  5.times do
+    c = Comment.create(description: Faker::HowIMetYourMother.quote,
+        user_id: u.id,
+        commentable_id: a.id,
+        commentable_type: Answer
+  )
+  end
+  5.times do
+    c = Comment.create(description: Faker::HowIMetYourMother.quote,
+        user_id: u.id,
+        commentable_id: q.id,
+        commentable_type: Question
+  )
+  end
+  5.times do |i|
+    v = Vote.create(user_id: u.id,
+      voteable_id: q.id,
+      voteable_type: Question
+  )
+  end
+  5.times do |i|
+   v = Vote.create(user_id: u.id,
+    voteable_id: a.id,
+    voteable_type: Answer
+  )
+  end
+  5.times do |i|
+    v = Vote.create(user_id: u.id,
+      voteable_id: c.id,
+      voteable_type: Comment
+  )
+  end
 
-20.times do
-  Question.create(title: Faker::Lorem.sentences(1),
-              description: Faker::Lorem.paragraph,
-              user_id: rand(1..20)
-    )
-end
-
-20.times do
-  Vote.create(user_id: rand(1..20),
-              voteable_id: rand(1..20),
-              voteable_type: ["question", "answer", "comment"].sample
-    )
-end
-
-20.times do
-  Answer.create(description: Faker::Lorem.paragraph,
-              question_id: rand(1..20),
-              user_id: rand(1..20)
-    )
-end
-
-20.times do
-  Comment.create(description: Faker::HowIMetYourMother.quote,
-              user_id: rand(1..20),
-              commentable_id: rand(1..20),
-              commentable_type: ["question", "answer"].sample
-    )
 end
