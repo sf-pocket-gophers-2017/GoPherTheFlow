@@ -1,3 +1,8 @@
+ filmon/user_controller
+
+body {
+  padding: 10px;
+
+}
 .errors{
   color : red;
-}

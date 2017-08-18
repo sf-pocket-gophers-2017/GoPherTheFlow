@@ -1,3 +1,6 @@
-get '/'do
-  redirect '/login'
+filmon/user_controller
+
+get '/' do
+  redirect '/questions'
+
 end

@@ -1,0 +1,6 @@
+<article>
+  <% @answers.each do |answer| %>
+    <p> <%= answer.description %> </p>
+    <p> <%= answer.user.username %> </p>
+  <% end %>
+</article>
