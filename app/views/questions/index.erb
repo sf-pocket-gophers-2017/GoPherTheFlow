@@ -1,17 +1,20 @@
 <div class="container">
-	<article>
-		<h2>Questions: </h2>
-		<% if @questions %>
-			  <% @questions.each do |question| %>
-			 	 <p> <a href="/questions/<%= question.id %>"> <%= question.title %> </a> </p>
-			 	 <h5>Posted By: <%= question.user.username %></h5>
-			  <% end %>
-		<% end %>
-		</article>
+  <article>
+  <h2>Questions: </h2>
+  <% if  logged_in? %>
+    <article>
+      <form action="/questions/new" method="get">
+        <input type="submit" value="New Question" >
+      </form>
+    </article>
+  <% end %>
 
-	<article>
-		<form action="/questions/new" method="get">
-			 <input type="submit" value="New Question" >
-		  </form>
-	</article>
-</div>
+  <% if @questions %>
+    <article>
+      <% @questions.each do |question| %>
+        <p> <a href="/questions/<%= question.id %>"> <%= question.title %> </a> </p>
+        <h5>Posted By: <%= question.user.username %></h5>
+      <% end %>
+    </article>
+  <% end %>
+ </div>
