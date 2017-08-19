@@ -5,7 +5,7 @@ Comment.delete_all
 Question.delete_all
 Answer.delete_all
 
-# Create 20 users with associated questions, answers, comments, and votes
+# Create 5 users with associated questions, answers, comments, and votes
 5.times do
   u = User.create(username: Faker::Internet.user_name,
                   email: Faker::Internet.safe_email,
@@ -27,6 +27,15 @@ Answer.delete_all
 
       5.times do |i|
         v = Vote.create(user_id: u.id,
+          up_down: 'up-vote',
+          voteable_id: c.id,
+          voteable_type: Comment
+        )
+      end
+
+      2.times do |i|
+        v = Vote.create(user_id: u.id,
+          up_down: 'down-vote',
           voteable_id: c.id,
           voteable_type: Comment
         )
@@ -35,6 +44,15 @@ Answer.delete_all
 
     5.times do |i|
       v = Vote.create(user_id: u.id,
+        up_down: 'up-vote',
+        voteable_id: q.id,
+        voteable_type: Question
+      )
+    end
+
+    3.times do |i|
+      v = Vote.create(user_id: u.id,
+        up_down: 'down-vote',
         voteable_id: q.id,
         voteable_type: Question
       )
@@ -56,14 +74,33 @@ Answer.delete_all
 
         5.times do |i|
           v = Vote.create(user_id: u.id,
+            up_down: 'up-vote',
             voteable_id: c.id,
             voteable_type: Comment
           )
         end
+
+        3.times do |i|
+          v = Vote.create(user_id: u.id,
+            up_down: 'down-vote',
+            voteable_id: c.id,
+            voteable_type: Comment
+          )
+        end
+
       end
 
       5.times do |i|
        v = Vote.create(user_id: u.id,
+        up_down: 'up-vote',
+        voteable_id: a.id,
+        voteable_type: Answer
+        )
+      end
+
+      2.times do |i|
+       v = Vote.create(user_id: u.id,
+        up_down: 'down-vote',
         voteable_id: a.id,
         voteable_type: Answer
         )
@@ -71,7 +108,6 @@ Answer.delete_all
     end
 
   end
-
 
 end
 
