@@ -1,7 +1,7 @@
 <nav>
   <% if logged_in? %>
-    <%= erb :"sessions/_logout" %> |
-    <a href="/"> Home </a>
+    <%= erb :'sessions/_logout', layout: false %>
+    <a href="/"> Home </a> | Welcome <%= current_user.username %>
   <% else %>
     <a href='/login'> Login </a> |
     <a href='/register'> Sign Up </a> |
