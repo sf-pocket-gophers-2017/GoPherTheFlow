@@ -26,14 +26,13 @@ end
 get '/questions/:id' do
   @question = Question.find(params[:id])
   @corr_answers = @question.answers
-
+  @corr_votes = @question.votes
+  # corr_votes = Vote.where(voteable_type: "Question", voteable_id: params[:id])
   erb :'questions/show'
 end
 
 get '/questions/:id/comments' do
   @question = Question.find(params[:id])
   @comments = @question.comments
-
-  erb :'/comments/_show'
+  erb :'comments/_show'
 end
-
