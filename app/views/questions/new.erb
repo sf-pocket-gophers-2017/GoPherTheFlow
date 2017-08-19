@@ -1,14 +1,13 @@
 <% if logged_in? %>
   <article>
     <form action="/questions" method="post">
-      <label>Question Title</label>
-      <input type="text" name=question[title]placeholder="Post your question here...(max length 64 characters)">
-      <label>Description</label>
-      <input type="text" name=question[description]placeholder="Post your question in detail here...">
+      <label>Question Title: </label>
+      <input type="text" name="question[title]" placeholder="Post your question here...(max length 64 characters)">
+      <label>Description: </label>
+      <input type="text" name="question[description]" placeholder="Post your question in detail here...">
 
       <input type="submit" value="Post a Question!">
     </form>
-    <%= current_user.username %>
   </article>
 <% end %>
 

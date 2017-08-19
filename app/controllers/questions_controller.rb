@@ -6,12 +6,15 @@ end
 
 # Fetch the form for posting a new question
 get '/questions/new' do
+  @user = current_user
   erb :'questions/new'
 end
 
 # Post the form with question params
 post '/questions' do
+  @user = current_user
   @question = Question.new(params[:question])
+  @question.user_id = @user.id
   if @question.save
     redirect "/questions/#{@question.id}"
   else
