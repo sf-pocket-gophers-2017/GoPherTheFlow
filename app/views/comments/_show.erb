@@ -1,11 +1,6 @@
 <article>
   <% @comments.each do |comment| %>
-  <ul>
-    <li>
-      <p> <%= comment.description %> </p>
-      <h5> Commented by: <%= comment.user.username %> </h5>
-    </li>
-  </ul>
-
+    <p> <%= comment.description %> </p>
+    <h5> Commented by: <%= comment.user.username %> </h5>
   <% end %>
 </article>

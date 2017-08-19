@@ -1,6 +1,5 @@
-<article>
-  <% @answers.each do |answer| %>
-    <p> <%= answer.description %> </p>
-    <p> <%= answer.user.username %> </p>
-  <% end %>
+<article class="answer-article">
+  <p> <%= answer.description %> </p>
+  <p> Answered By: <%= answer.user.username %> </p>
+  <%= erb :'votes/_show', locals: {resource: answer} %>
 </article>
