@@ -7,6 +7,7 @@ post '/:voteable_type/:voteable_id/votes' do
   redirect "/questions/#{params[:question_id]}"
 end
 
+
 # -------------------------------------------------------- #
 
 # Below is creating a unique route for each option of votes.
@@ -15,6 +16,7 @@ end
 # DO NOT DO THIS EVER!!!
 
 # -------------------------------------------------------- #
+
 
 # # Up Votes on Questions
 # get '/questions/:question_id/votes_up' do
@@ -46,6 +48,7 @@ end
 #   end
 # end
 
+
 # # Down Votes on Questions
 # get '/questions/:question_id/votes_down' do
 #   @question = Question.find(params[:question_id])
@@ -76,7 +79,7 @@ end
 #   end
 # end
 
-# # -------------------------------------------------------- #
+# -------------------------------------------------------- #
 
 # # Up Votes on Answers
 # get '/answers/:answer_id/votes/votes_up' do
