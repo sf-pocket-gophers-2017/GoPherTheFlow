@@ -1,0 +1,13 @@
+<form action="<%= resource.url %>/votes" method="post">
+  <input type="hidden" name="up_down" value="up-vote">
+  <input type="hidden" name="question_id" value='<%= @question.id %>'>
+  <input type="submit" value="up-vote">
+</form>
+
+<p> <%= resource.total_votes %> votes </p>
+
+<form action="<%= resource.url %>/votes" method="post">
+  <input type="hidden" name="up_down" value="down-vote">
+  <input type="hidden" name="question_id" value='<%= @question.id %>'>
+  <input type="submit" value="down-vote">
+</form>

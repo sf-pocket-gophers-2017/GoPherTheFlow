@@ -19,7 +19,6 @@ end
 get '/answers/:id/comments' do
   @answer = Answer.find(params[:id])
   @comments = @answer.comments
-
   erb :'comments/_show'
 end
 
