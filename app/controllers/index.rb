@@ -1,4 +1,3 @@
-
 get '/' do
   redirect '/questions'
 

@@ -27,8 +27,10 @@ get '/questions/:id' do
   erb :'questions/show'
 end
 
-get '/questions/:question_id/comments' do
-  @question = Question.find(params[:question_id])
-  @question_comments = @question.comments
+get '/questions/:id/comments' do
+  @question = Question.find(params[:id])
+  @comments = @question.comments
+
+  erb :'/comments/_show'
 end
 

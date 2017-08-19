@@ -19,12 +19,12 @@
     <%= answer.description %>
     <h5> Answered by: <%= answer.user.username %></h5>
   <% if logged_in? %>
-    <h5> <a href="/comments/answers/<%=answer.id %> ">See Comments</a></h5>
+    <h5> <a href="/answers/<%=answer.id %>/comments ">See Comments</a></h5>
     <h5><a href="/comments/new">Add Comment</a></h5>
   </li>
   <br>
   <% else %>
-    <h5> <a href="/comments/answers/<%=answer.id %>">See Comments</a></h5>
+    <h5> <a href="/answers/<%=answer.id %>/comments ">See Comments</a></h5>
   <% end %>
 <% end  %>
 </ul>
