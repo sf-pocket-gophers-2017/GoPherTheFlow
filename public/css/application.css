@@ -1,6 +1,30 @@
 body {
   padding: 20px;
-
 }
+
+.container{
+	max-width: 80%;
+	margin: auto;
+}
+
+#nav-bar{
+	margin : 0 10%;
+	background-color: gray;
+	height : 40%;
+}
+
 .errors{
-  color : red;
+ 	color : red;
+}
+
+input[type=submit] {
+	display : inline !important;
+}
+
+#logout{
+	display : inline !important;
+}
+
+#user-name{
+	padding-left : 70% ;
+}

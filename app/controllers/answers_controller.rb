@@ -8,7 +8,7 @@ post '/questions/:question_id/answers' do
   @user = current_user
   @question = Question.find(params[:question_id])
   @answer = Answer.new({description: params[:description], question_id: @question.id, user_id: @user.id})
-  if @answer.save?
+  if @answer.save
     redirect "/questions/#{@question.id}"
   else
     @errors = @answer.errors.full_messages
