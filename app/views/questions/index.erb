@@ -1,15 +1,17 @@
-<article>
-<h2>Questions: </h2>
-<% if @questions %>
-  <% @questions.each do |question| %>
-  <p> <a href="/questions/<%= question.id %>"> <%= question.title %> </a> </p>
-  <h5>Posted By: <%= question.user.username %></h5>
-  <% end %>
-<% end %>
-</article>
+<div class="container">
+	<article>
+		<h2>Questions: </h2>
+		<% if @questions %>
+			  <% @questions.each do |question| %>
+			 	 <p> <a href="/questions/<%= question.id %>"> <%= question.title %> </a> </p>
+			 	 <h5>Posted By: <%= question.user.username %></h5>
+			  <% end %>
+		<% end %>
+		</article>
 
-<article>
-  <form action="/questions/new" method="get">
-    <input type="submit" value="New Question" >
-  </form>
-</article>
+	<article>
+		<form action="/questions/new" method="get">
+			 <input type="submit" value="New Question" >
+		  </form>
+	</article>
+</div>

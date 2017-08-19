@@ -19,9 +19,11 @@
 </head>
 <body>
 
-  <%= erb :'_nav_bar', layout: false %>
-
-  <h1>GoPher The Flow</h1>
+  <%= erb :'_nav_bar' %>
+  <div class="container">
+    <h1>GoPher The Flow</h1>
+  </div>
+  
 
   <%= yield %>
 </body>

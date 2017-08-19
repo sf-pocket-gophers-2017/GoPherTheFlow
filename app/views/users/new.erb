@@ -1,19 +1,20 @@
-<form class='container' method="post" action="/register">
-  <!--  -->
-    <%= erb :'_errors', layout: false %>
-  <div>
-    <label>Username: </label>
-    <input type="text" name="user[username]">
-  </div>
-  <div>
-    <label>Email: </label>
-    <input type="email" name="user[email]">
-  </div>
-  <div>
-    <label>Password: </label>
-    <input type="password" name="user[password]">
-  </div>
-  <div>
-    <input type="submit" name="register" value="register">
-  </div>
-</form>
+ <div class= "container">
+    <form class='container' method="post" action="/register">
+        <%= erb :'_errors', layout: false %>
+      <div>
+        <label>Username: </label>
+        <input type="text" name="user[username]">
+      </div>
+      <div>
+        <label>Email: </label>
+        <input type="email" name="user[email]">
+      </div>
+      <div>
+        <label>Password: </label>
+        <input type="password" name="user[password]">
+      </div>
+      <div>
+        <input type="submit" name="register" value="register">
+      </div>
+    </form>
+</div> 

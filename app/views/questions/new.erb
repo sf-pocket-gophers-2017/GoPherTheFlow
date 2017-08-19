@@ -1,13 +1,19 @@
-<% if logged_in? %>
-  <article>
-    <form action="/questions" method="post">
-      <label>Question Title: </label>
-      <input type="text" name="question[title]" placeholder="Post your question here...(max length 64 characters)">
-      <label>Description: </label>
-      <input type="text" name="question[description]" placeholder="Post your question in detail here...">
+<div class="container">
+	<% if logged_in? %>
+	  <article>
+	    <form action="/questions" method="post">
+	      <div>
+		      <label>Question Title: </label>
+		      <input type="text" name="question[title]" placeholder="Post your question here...(max length 64 characters)"> 
+		 </div>
+	       <div>
+	      	<label>Description: </label>
+	      	<input type="textarea" name="question[description]" placeholder="Post your question in detail here...">
 
-      <input type="submit" value="Post a Question!">
-    </form>
-  </article>
-<% end %>
+	      	<p><input type="submit" value="Post a Question!"></p>
+	      </div>
+	    </form>
+	  </article>
+	<% end %>
+</div>
 
