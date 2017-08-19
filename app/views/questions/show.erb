@@ -6,7 +6,7 @@
   <!-- # For question, if logged in
    -->
    <% if logged_in? %>
-    <a href="/questions/<%= @question.id %>/comments">See Comments</a> | <a href="/comments/new">Add Comment</a> | <a href="/questions/<%= @question.id %>/answers/new">Add Answer</a>
+    <a href="/questions/<%= @question.id %>/comments">See Comments</a> | <a href="/questions/<%= @question.id%>/comments/new">Add Comment</a> | <a href="/questions/<%= @question.id %>/answers/new">Add Answer</a>
     <!-- For question, if not logged in -->
   <% else %>
     <h5> <a href="/questions/<%= @question.id %>/comments">See Comments</a></h5>

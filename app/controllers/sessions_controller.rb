@@ -9,7 +9,6 @@ post '/login' do
     redirect "/users/#{@user.id}"
   else
     status 422
-    # errors.add('The email or password is incorrect.')
     @errors = ['The email or password is incorrect.']
     erb :'sessions/index'
   end

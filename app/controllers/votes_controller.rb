@@ -18,7 +18,7 @@ post '/questions/:question_id/votes' do
   else
     @vote = @question.votes.new(user_id: @user.id)
 
-    if @vote.save?
+    if @vote.save
       redirect "/questions/#{@question.id}"
     else
       @errors = @vote.errors.full_messages
@@ -56,7 +56,7 @@ post '/answers/:answer_id/votes' do
   else
     @vote = @answer.votes.new(user_id: @user.id)
 
-    if @vote.save?
+    if @vote.save
       redirect "/questions/#{@answer.question_id}"
     else
       @errors = @vote.errors.full_messages
@@ -94,7 +94,7 @@ post '/comments/:comment_id/votes' do
   else
     @vote = @comment.votes.new(user_id: @user.id)
 
-    if @vote.save?
+    if @vote.save
       if @comment.commentable_type == "Question"
         redirect "/questions/#{@comment.commentable_id}"
       elsif @comment.commentable_type == "Answer"
