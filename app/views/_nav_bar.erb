@@ -1,10 +1,10 @@
 <nav>
   <% if logged_in? %>
-    <a href='/logout'>Login</a>|
-    <a href="/">Home</a>|
+    <%= erb :"sessions/_logout" %> |
+    <a href="/"> Home </a>
   <% else %>
-    <a href='/login'>Login</a>|
-
-    <a href='/register'>Sign Up</a>
+    <a href='/login'> Login </a> |
+    <a href='/register'> Sign Up </a> |
+    <a href="/"> Home </a>
   <% end %>
 </nav>

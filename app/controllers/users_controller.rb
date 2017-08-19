@@ -17,6 +17,6 @@ post '/register' do
 end
 
 get '/users/:id' do
-  @users = User.find(params[:id])
+  @user = User.find(params[:id])
   erb :'users/show'
 end
