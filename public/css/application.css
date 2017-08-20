@@ -9,8 +9,8 @@ body {
 
 #nav-bar{
 	margin : 0 10%;
-	background-color: gray;
-	height : 40%;
+	background-color: lightgrey;
+	height : 12%;
 }
 
 .errors{
@@ -18,13 +18,45 @@ body {
 }
 
 input[type=submit] {
-	display : inline !important;
+  display : inline !important;
 }
 
 #logout{
-	display : inline !important;
+  display : inline !important;
 }
 
 #user-name{
-	padding-left : 70% ;
+  float : right;
+  padding-right: 10px;
+  padding-top: 5px;
 }
+
+button {
+  background: transparent;
+  border: none;
+}
+
+.vote-img {
+  padding-left: 5px;
+  margin: auto;
+  width: 30px;
+  height: 30px;
+}
+
+.votes {
+  text-align: center;
+}
+
+.vote-bar {
+  max-width: 20%;
+  margin: auto;
+  margin-right: 20px;
+  float: left;
+}
+
+
+
+
+
+
+

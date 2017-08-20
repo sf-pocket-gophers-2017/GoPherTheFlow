@@ -1,37 +1,44 @@
 <div class="container">
 
+  <br>
   <article>
+    <%= erb :'votes/_show', locals: {resource: @question} %>
     <h3> Question Title: <%= @question.title %></h3>
     <h4>Question Description:</h4><p><%= @question.description %></p>
     <h5> Posted by: <%= @question.user.username %></h5>
-    <%= erb :'votes/_show', locals: {resource: @question} %>
+    <br>
 
   <!-- # For question, if logged in -->
-  <% if logged_in? %>
-    <a href="/questions/<%= @question.id %>/comments">See Comments</a> |
-    <a href="/comments/new">Add Comment</a> |
-    <a href="/questions/<%= @question.id %>/answers/new">Add Answer</a>
-    <!-- For question, if not logged in -->
-  <% else %>
-    <h5> <a href="/questions/<%= @question.id %>/comments">See Comments</a></h5>
-  <% end %>
+    <% if logged_in? %>
+      <h5> <a href="/questions/<%= @question.id %>/comments">See Comments</a>  |
+      <a href="/comments/new">Add Comment</a>  |
+      <a href="/questions/<%= @question.id %>/answers/new">Add Answer</a> </h5>
+      <!-- For question, if not logged in -->
+    <% else %>
+      <h5> <a href="/questions/<%= @question.id %>/comments">See Comments</a></h5>
+    <% end %>
+
   </article>
+  <br><br>
+
 
   <h4><%= @corr_answers.count %> Answers </h4>
+  <hr>
 
   <div class="corresponding-answers">
   <% @corr_answers.each do |answer| %>
     <%= erb :'answers/_show', locals: {answer: answer}, layout: false %>
 
     <% if logged_in? %>
-      <h5> <a href="/answers/<%= answer.id %>/comments">See Comments</a> </h5>
-      <h5> <a href="/questions/<%= @question.id %>/comments/new">Add Comment</a> </h5>
+      <h5> <a href="/answers/<%= answer.id %>/comments">See Comments</a>  |
+      <a href="/questions/<%= @question.id %>/comments/new">Add Comment</a> </h5>
       <br>
     <% else %>
       <h5> <a href="/answers/<%= answer.id %>/comments ">See Comments</a></h5>
       <br>
     <% end %>
 
+    <hr>
   <% end  %>
   </div>
 
