@@ -2,9 +2,7 @@
 
   <br>
   <article>
-    <div class="vote-bar">
-      <%= erb :'votes/_show', locals: {resource: @question} %>
-    </div>
+    <%= erb :'votes/_show', locals: {resource: @question} %>
     <h3> Question Title: <%= @question.title %></h3>
     <h4>Question Description:</h4><p><%= @question.description %></p>
     <h5> Posted by: <%= @question.user.username %></h5>

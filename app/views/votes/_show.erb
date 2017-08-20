@@ -1,19 +1,21 @@
-<% if logged_in? %>
-  <form id="up-vote-button" action="<%= resource.url %>/votes" method="post">
-    <input type="hidden" name="up_down" value="up-vote">
-    <input type="hidden" name="question_id" value='<%= @question.id %>'>
-    <button><img class="vote-img" src="https://image.freepik.com/free-icon/up-arrow_318-42561.jpg"></button>
-  </form>
-<% end %>
+<div class="vote-bar">
+  <% if logged_in? %>
+    <form class="vote-button" action="<%= resource.url %>/votes" method="post">
+      <input type="hidden" name="up_down" value="up-vote">
+      <input type="hidden" name="question_id" value='<%= @question.id %>'>
+      <button><img class="vote-img" src="https://image.freepik.com/free-icon/up-arrow_318-42561.jpg"></button>
+    </form>
+  <% end %>
 
-  <div class="votes">
-    <p> <%= resource.total_votes %> votes </p>
-  </div>
+    <div class="votes">
+      <p> <%= resource.total_votes %> votes </p>
+    </div>
 
-<% if logged_in? %>
-  <form id="down-vote-button" action="<%= resource.url %>/votes" method="post">
-    <input type="hidden" name="up_down" value="down-vote">
-    <input type="hidden" name="question_id" value='<%= @question.id %>'>
-    <button><img class="vote-img" src="https://image.freepik.com/free-icon/down-arrow-inside-a-circle_318-42553.jpg"></button>
-  </form>
-<% end %>
+  <% if logged_in? %>
+    <form class="vote-button" action="<%= resource.url %>/votes" method="post">
+      <input type="hidden" name="up_down" value="down-vote">
+      <input type="hidden" name="question_id" value='<%= @question.id %>'>
+      <button><img class="vote-img" src="https://image.freepik.com/free-icon/down-arrow-inside-a-circle_318-42553.jpg"></button>
+    </form>
+  <% end %>
+</div>

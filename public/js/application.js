@@ -8,6 +8,7 @@ var newAnswerListener = function() {
   $("#new-answer-link").on("click", function(event) {
     event.preventDefault();
 
+    var link = $(this);
     var url = $(this).attr("href");
 
     var request = $.ajax({
@@ -16,6 +17,7 @@ var newAnswerListener = function() {
     });
 
     request.done(function(response) {
+      $("#new-answer").remove();
       $("#new-answer-link").closest("article").append(response);
     });
   });
@@ -43,7 +45,7 @@ var newAnswerSubmitListener = function() {
 };
 
 var newVoteSubmitListener = function() {
-  $(".vote-bar").on("submit", "form", function(event) {
+  $(".container").on("submit", ".vote-button", function(event) {
     event.preventDefault();
 
     var voteBar = $(this).closest(".vote-bar")
@@ -61,7 +63,7 @@ var newVoteSubmitListener = function() {
 
     request.done(function(response) {
       voteBar.remove();
-      voteLocation.prepend("<div class='vote-bar'>" + response + "</div>");
+      voteLocation.prepend(response);
     });
   });
 };

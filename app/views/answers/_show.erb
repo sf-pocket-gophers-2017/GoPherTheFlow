@@ -1,8 +1,6 @@
 <article class="answer-article">
 
-  <div class="vote-bar">
-    <%= erb :'votes/_show', locals: {resource: answer} %>
-  </div>
+  <%= erb :'votes/_show', locals: {resource: answer} %>
 
   <p> <%= answer.description %> </p>
   <h5> Answered By: <%= answer.user.username %> </h5>
