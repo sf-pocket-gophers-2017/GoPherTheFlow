@@ -1,6 +1,22 @@
-<article>
-  <% @comments.each do |comment| %>
-    <p> <%= comment.description %> </p>
-    <h5> Commented by: <%= comment.user.username %> </h5>
-  <% end %>
-</article>
+<div class="container">
+
+  <article>
+
+    <% @comments.each do |comment| %>
+      <article>
+
+        <%= erb :'votes/_show', locals: {resource: comment} %>
+
+        <p> <%= comment.description %> </p>
+        <h5> Commented by: <%= comment.user.username %> </h5>
+
+        <br><br><br>
+        <hr>
+
+      </article>
+
+    <% end %>
+
+  </article>
+
+</div>
