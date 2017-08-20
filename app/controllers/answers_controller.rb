@@ -1,7 +1,11 @@
 get '/questions/:question_id/answers/new' do
   @question = Question.find(params[:question_id])
   @answer = Answer.new
-  erb :'/answers/_new', layout: false
+  if request.xhr?
+    erb :"answers/_new", layout: false
+  else
+    erb :"answers/_new"
+  end
 end
 
 post '/questions/:question_id/answers' do
@@ -9,10 +13,14 @@ post '/questions/:question_id/answers' do
   @question = Question.find(params[:question_id])
   @answer = Answer.new({description: params[:description], question_id: @question.id, user_id: @user.id})
   if @answer.save
-    redirect "/questions/#{@question.id}"
+    if request.xhr?
+      erb :"answers/_show", locals: {answer: @answer}, layout: false
+    else
+      redirect "/questions/#{@question.id}"
+    end
   else
     @errors = @answer.errors.full_messages
-    erb :'/answers/_new', layout: false
+    erb :'answers/_new', layout: false
   end
 end
 
