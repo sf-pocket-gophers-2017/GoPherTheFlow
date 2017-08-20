@@ -3,7 +3,7 @@
   <h2>Questions: </h2>
   <% if  logged_in? %>
     <article>
-      <form action="/questions/new" method="get">
+      <form id ="new-question" action="/questions/new" method="get">
         <input type="submit" value="New Question" >
       </form>
     </article>
@@ -13,7 +13,7 @@
     <article>
       <% @questions.each do |question| %>
         <p> <a href="/questions/<%= question.id %>"> <%= question.title %> </a> </p>
-        <h5>Posted By: <%= question.user.username %></h5>
+        <h5>Posted By: <%= question.user.username %></h5> <hr>
       <% end %>
     </article>
   <% end %>

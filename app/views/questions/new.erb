@@ -1,7 +1,7 @@
 <div class="container">
 	<% if logged_in? %>
 	  <article>
-	    <form action="/questions" method="post">
+	    <form id="new-question-post" action="/questions" method="post">
 	      <div>
 		      <label>Question Title: </label>
 		      <input type="text" name="question[title]" placeholder="Post your question here...(max length 64 characters)">

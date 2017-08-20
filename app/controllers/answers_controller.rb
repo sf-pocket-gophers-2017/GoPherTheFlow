@@ -19,8 +19,13 @@ post '/questions/:question_id/answers' do
       redirect "/questions/#{@question.id}"
     end
   else
-    @errors = @answer.errors.full_messages
-    erb :'answers/_new', layout: false
+    if request.xhr?
+      @errors = @answer.errors.full_messages
+      erb :'answers/_new', layout: false
+    else
+      @errors = @answer.errors.full_messages
+      erb :'answers/_new', layout: false
+    end
   end
 end
 

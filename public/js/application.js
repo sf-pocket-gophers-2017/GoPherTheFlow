@@ -1,6 +1,9 @@
 $(document).ready(function() {
   newAnswerListener();
   newAnswerSubmitListener();
+  // newQuestionListener();
+  // newQuetionSubmitListener();
+
 });
 
 var newAnswerListener = function() {
@@ -15,7 +18,6 @@ var newAnswerListener = function() {
     });
 
     request.done(function(response) {
-      console.log(response);
       $("#new-answer-link").closest("article").append(response);
     });
   });
@@ -35,10 +37,36 @@ var newAnswerSubmitListener = function() {
       data: data
     });
 
+    $("#new-answer").remove();
+
     request.done(function(response) {
       console.log(response);
       $(".corresponding-answers").prepend(response);
-      $("#new-answer").remove();
+      
     });
   });
 };
+
+// var newQuestionListener = function(){
+//   $(".body").on("submit", "#new-question",function(event){
+//     event.preventDefault();
+//     var $this = $("#new-question");
+//     var url = $this.attr("action");
+//     var method = $this.attr("method");
+// debugger
+//     var request = $.ajax({
+//       url: url,
+//       method: method
+//     });
+//     request.done(function(response){
+//       console.log(response);
+      
+//     });
+//   });
+
+// };
+
+
+
+
+  // newQuetionSubmitListener();
