@@ -10,10 +10,11 @@ post '/:voteable_type/:voteable_id/votes' do
   elsif voteable_string == "answer"
     @question = Answer.find(@vote.voteable_id).question
   elsif voteable_string == "comment"
-    if @vote.voteable_type.commentable_type == "Question"
-      @question = Question.find(@vote.voteable_id.commentable_id)
-    elsif @vote.voteable_type.commentable_type == "Answer"
-      @question = Answer.find(@vote.voteable_id.commentable_id).question
+    comment = Comment.find(@vote.voteable_id)
+    if comment.commentable_type == "Question"
+      @question = Question.find(comment.commentable_id)
+    elsif comment.commentable_type == "Answer"
+      @question = Answer.find(comment.commentable_id).question
     else
       @errors = ["Question not found for this comment."]
     end
