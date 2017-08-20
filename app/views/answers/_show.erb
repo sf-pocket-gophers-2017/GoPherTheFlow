@@ -2,4 +2,15 @@
   <%= erb :'votes/_show', locals: {resource: answer} %>
   <p> <%= answer.description %> </p>
   <p> Answered By: <%= answer.user.username %> </p>
+
+  <% if logged_in? %>
+      <h5> <a href="/answers/<%= answer.id %>/comments">See Comments</a>  |
+      <a href="/answers/<%= answer.id %>/comments/new">Add Comment</a> </h5>
+      <br>
+    <% else %>
+      <h5> <a href="/answers/<%= answer.id %>/comments ">See Comments</a></h5>
+      <br>
+    <% end %>
+
+    <hr>
 </article>
