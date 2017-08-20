@@ -32,7 +32,7 @@
 
     <% if logged_in? %>
       <h5> <a href="/answers/<%= answer.id %>/comments">See Comments</a>  |
-      <a href="/questions/<%= @question.id %>/comments/new">Add Comment</a> </h5>
+      <a href="/answers/<%= answer.id %>/comments/new">Add Comment</a> </h5>
       <br>
     <% else %>
       <h5> <a href="/answers/<%= answer.id %>/comments ">See Comments</a></h5>
