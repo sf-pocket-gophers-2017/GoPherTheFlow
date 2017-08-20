@@ -1,5 +1,7 @@
-<form id="new-answer" action="/questions/<%= @question.id %>/answers" method="post">
-  <label>Description: </label>
-  <input type="text" name="description" value="<%= @answer.description %>">
-  <input type="submit" name="submit" value="Submit Answer">
-</form>
+<div class="new-answer">
+  <form action="/questions/<%= @question.id %>/answers" method="post">
+    <label>Description: </label>
+    <input type="text" name="description" value="<%= @answer.description %>">
+    <input type="submit" name="submit" value="Submit Answer">
+  </form>
+</div>
