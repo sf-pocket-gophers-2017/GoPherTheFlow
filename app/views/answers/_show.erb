@@ -1,5 +1,5 @@
 <article class="answer-article">
+  <%= erb :'votes/_show', locals: {resource: answer} %>
   <p> <%= answer.description %> </p>
   <p> Answered By: <%= answer.user.username %> </p>
-  <%= erb :'votes/_show', locals: {resource: answer} %>
 </article>
