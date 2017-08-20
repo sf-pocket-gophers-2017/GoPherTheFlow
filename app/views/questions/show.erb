@@ -12,7 +12,7 @@
 
     <% if logged_in? %>
       <h5> <a href="/questions/<%= @question.id %>/comments">See Comments</a>  |
-      <a href="/comments/new">Add Comment</a>  |
+      <a href="/questions/<%= @question.id %>/comments/new">Add Comment</a>  |
       <a href="/questions/<%= @question.id %>/answers/new">Add Answer</a> </h5>
       <!-- For question, if not logged in -->
     <% else %>
