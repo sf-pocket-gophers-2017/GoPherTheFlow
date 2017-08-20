@@ -1,7 +1,9 @@
 <article class="answer-article">
+
   <%= erb :'votes/_show', locals: {resource: answer} %>
+
   <p> <%= answer.description %> </p>
-  <p> Answered By: <%= answer.user.username %> </p>
+  <h5> Answered By: <%= answer.user.username %> </h5>
 
   <% if logged_in? %>
       <h5> <a href="/answers/<%= answer.id %>/comments">See Comments</a>  |
@@ -13,4 +15,5 @@
     <% end %>
 
     <hr>
+
 </article>
