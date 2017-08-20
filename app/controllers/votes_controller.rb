@@ -4,7 +4,28 @@ post '/:voteable_type/:voteable_id/votes' do
   @voteable = voteable_class.find(params[:voteable_id])
   @user = current_user
   @vote = @voteable.votes.create!(up_down: params[:up_down], user_id: @user.id)
-  redirect "/questions/#{params[:question_id]}"
+
+  if voteable_string == "question"
+    @question = Question.find(@vote.voteable_id)
+  elsif voteable_string == "answer"
+    @question = Answer.find(@vote.voteable_id).question
+  elsif voteable_string == "comment"
+    if @vote.voteable_type.commentable_type == "Question"
+      @question = Question.find(@vote.voteable_id.commentable_id)
+    elsif @vote.voteable_type.commentable_type == "Answer"
+      @question = Answer.find(@vote.voteable_id.commentable_id).question
+    else
+      @errors = ["Question not found for this comment."]
+    end
+  else
+    @errors = ["Question not found."]
+  end
+
+  if request.xhr?
+    erb :"votes/_show", locals: {resource: @voteable}, layout: false
+  else
+    redirect "/questions/#{params[:question_id]}"
+  end
 end
 
 

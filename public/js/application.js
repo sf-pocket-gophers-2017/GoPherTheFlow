@@ -1,6 +1,7 @@
 $(document).ready(function() {
   newAnswerListener();
   newAnswerSubmitListener();
+  newVoteSubmitListener();
 });
 
 var newAnswerListener = function() {
@@ -15,7 +16,6 @@ var newAnswerListener = function() {
     });
 
     request.done(function(response) {
-      console.log(response);
       $("#new-answer-link").closest("article").append(response);
     });
   });
@@ -36,9 +36,47 @@ var newAnswerSubmitListener = function() {
     });
 
     request.done(function(response) {
-      console.log(response);
       $(".corresponding-answers").prepend(response);
       $("#new-answer").remove();
     });
   });
 };
+
+var newVoteSubmitListener = function() {
+  $(".vote-bar").on("submit", "form", function(event) {
+    event.preventDefault();
+
+    var voteBar = $(this).closest(".vote-bar")
+    var voteLocation = voteBar.closest("article")
+
+    var url = $(this).attr("action");
+    var method = $(this).attr("method");
+    var data = $(this).serialize();
+
+    var request = $.ajax({
+      url: url,
+      method: method,
+      data: data
+    });
+
+    request.done(function(response) {
+      voteBar.remove();
+      voteLocation.prepend("<div class='vote-bar'>" + response + "</div>");
+    });
+  });
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
